@@ -1,6 +1,6 @@
 #include "ContactsBook.h"
 
-void ContactsBook::add_contact(Contact& contact)
+void ContactsBook::add_contact(const Contact& contact)
 {
 	/*
 		- Check if the list is full, if it is full call the resize function
@@ -42,8 +42,8 @@ void ContactsBook::resize_list()
 	/*
 	*	Here you will resize the contact list, see example code given in lab manual to see how to resize arrays
 	*	You will allocate a temporary new array of double the current size and copy the contacts from 
-	*   previous array to this array one by one, get the copy of each contact using copy_contact 
-	*   function of Contact class
+	*       previous array to this array one by one, get the copy of each contact using copy_contact 
+	*       function of Contact class
 	*	Delete the previous array
 	*	Assign the new temporary array to the contacts_list pointer
 	*	Updated the this->size_of_contacts with new size
@@ -67,7 +67,7 @@ Contact* ContactsBook::search_contact(std::string phone)
 	return nullptr;
 }
 
-Contact* ContactsBook::search_contact(Address address)
+Contact* ContactsBook::search_contact(const Address& address)
 {
 	/*
 	*	Remove this return nullptr; before writing your code
@@ -114,16 +114,13 @@ void ContactsBook::merge_duplicates()
 }
 
 
-bool ContactsBook::load_from_file(std::string file_name) 
+void ContactsBook::load_from_file(std::string file_name) 
 {
 	/*
-	*	Read contacts back from file in the same format
-	* 	Read size_of_contacts
-	*	Using this size_of_contacts read from file, create a new ContactsBook object
+	*	Read contacts back from file in the same format	
 	*	Read the contacts_count, and run a loop for this contacts_count and read the 
-	*	contacts in the same format as you stored, create new object for each contact
-	*	that you read from file and add it to contact book object you created above.
-	* 	Return contacts book.
+	*	contacts in the same format as you stored
+	*	Add them to contact book (this.add_contact function can be used)
 	*	Finally, close the file
 	*/
 }
@@ -133,11 +130,10 @@ void ContactsBook::save_to_file(std::string file_name)
 {
 	/*
 	*	In this function you will store all the contacts to a file
-	*	On first line store size_of_contacts
-	*	On second line store contacts_count
+	*	On first line store contacts_count
 	*	On next lines store contacts in the following format:
-	*   2 lines for each contact
-	*   On oneline write contact attributes(except address) in comma separated format. On second line
+	*       2 lines for each contact
+	*       On oneline write contact attributes(except address) in comma separated format. On second line
 	*	store address atributes in the same format
 	*	first_name,last_name,mobile_number,email_address
 	*	house,street,city,country
