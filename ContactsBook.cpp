@@ -114,7 +114,7 @@ void ContactsBook::merge_duplicates()
 }
 
 
-static ContactsBook* ContactsBook::load_from_file(std::string file_name) 
+bool ContactsBook::load_from_file(std::string file_name) 
 {
 	/*
 	*	Read contacts back from file in the same format
