@@ -17,13 +17,12 @@ private:
 						    // stored at this count plus 1 index
 
 public:
-	void add_contact(const Contact& contact);
+	void add_contact(Contact& contact);
 	int total_contacts();
 
 	Contact* search_contact(std::string first_name, std::string last_name);
-	Contact* search_contact(std::string phone);
-	Contact* search_contact(const Address& address);
-
+	 void print_contact();
+	 void p();
 	ContactsBook(int size_of_list);
 
 	void print_contacts_sorted(std::string choice); // Only two choices first_name or last_name
@@ -33,11 +32,13 @@ public:
 	/* 
 	*  This function loads contacts from the given file (see details in ContactsBook.cpp)
 	*/
-	void load_from_file(std::string file_name);
+	 ContactsBook* load_from_file(std::string file_name);
 	void save_to_file(std::string file_name);
-
+	bool compare(std::string choice, Contact& c1, Contact& c2);
+	void swap(Contact* contacts_list, int i, int j);
 private:
 	bool full();
 	void resize_list();
 	void sort_contacts_list(Contact *contacts_list, std::string choice);
+	Contact* copy_contacts_list();
 };
